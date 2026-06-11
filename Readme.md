@@ -41,7 +41,7 @@ Create a `builder.conf.json` file in the **root directory** (the parent of the `
 
 ```json
 {
-  "endCommends": ["docker exec nginx nginx -s reload"],
+  "endCommands": ["docker exec nginx nginx -s reload"],
   "dockerComposePath": "docker-compose.yml",
   "keepFiles": ["client/.env", "nginx", "server/.env", "docker-compose.yml", ".env"],
   "serverInfo": {
@@ -57,7 +57,7 @@ Create a `builder.conf.json` file in the **root directory** (the parent of the `
 
 | Field | Required | Description |
 |---|---|---|
-| `endCommends` | No | Commands to run on the VPS **after** deploy completes (e.g., reload nginx) |
+| `endCommands` | No | Commands to run on the VPS **after** deploy completes (e.g., reload nginx) |
 | `dockerComposePath` | Yes | Path to your `docker-compose.yml`, relative to the root directory |
 | `keepFiles` | No | Extra files/folders to upload to the VPS (env files, nginx config, etc.) |
 | `serverInfo.username` | Yes | SSH username on the VPS |
