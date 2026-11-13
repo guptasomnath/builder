@@ -133,9 +133,9 @@ const stageFilesForUpload = async (keepFiles, absolutePaths) => {
       recursive: true,
     });
 
-    const lastSlashIndex = keepFiles[i].lastIndexOf("/");
-    if (lastSlashIndex !== -1) {
-      stagingPaths.push(`${TEMP_FOLDER_PATH}/${keepFiles[i].slice(0, lastSlashIndex)}`);
+    const firstSlashIndex = keepFiles[i].indexOf("/");
+    if (firstSlashIndex !== -1) {
+      stagingPaths.push(`${TEMP_FOLDER_PATH}/${keepFiles[i].slice(0, firstSlashIndex)}`);
     } else {
       stagingPaths.push(`${TEMP_FOLDER_PATH}/${keepFiles[i]}`);
     }
@@ -157,6 +157,9 @@ const uploadFilesToServer = (stagingPaths, config) => {
     if (config.sshKeyPath) {
       scpArgs.unshift("-i", config.sshKeyPath);
     }
+
+    console.dir("_______________SCP ARGS_______________");
+    console.dir(scpArgs);
 
     const upload = spawn("scp", scpArgs);
 
