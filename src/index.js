@@ -158,9 +158,6 @@ const uploadFilesToServer = (stagingPaths, config) => {
       scpArgs.unshift("-i", config.sshKeyPath);
     }
 
-    console.dir("_______________SCP ARGS_______________");
-    console.dir(scpArgs);
-
     const upload = spawn("scp", scpArgs);
 
     upload.stdout.on("data", (data) => console.log(data.toString()));
